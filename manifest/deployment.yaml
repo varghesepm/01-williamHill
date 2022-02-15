@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wh-main-app
+  name: wh-main-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wh-main-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: wh-main-app
+    spec:
+      containers:
+      - image: nginx:1.21.6
+        name: nginx
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: wh-main-secrets
+                key: API_KEY
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 250Mi
+            cpu: 500m
+          limits: 
+            memory: 500Mi
+            cpu: 1000m
+      serviceAccount: wh-main-sa
+      automountServiceAccountToken: false
+      securityContext:
+        runAsUser: 100
+    
