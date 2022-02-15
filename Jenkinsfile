@@ -4,7 +4,9 @@ pipeline {
 	agent any
 
 	environment {
+		// API_KEY stored as a credential in Jenkins
         	WH_API_KEY = credentials('wh-main-api-key')
+		// Docker hub registry
 		IMG_REPO = "mmebin/wh"
 	}
 
