@@ -7,7 +7,7 @@ chmod +x init.sh
 ./init.sh
 ```
 ### Assuming Jenkins servers configured with the following
-- Assuming Jenkin slaves have access to `k8s cluster`
+- Jenkin slaves have access to `k8s cluster`
 - `yq` - Command-line yaml processor.
 - `trivy` - Vulnerability scanner for containers and other artifacts.
 - Sensitive data (API_KEY,docker hub) are configured in Jenkins as credentials.
