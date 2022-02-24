@@ -1,6 +1,4 @@
-# Option 01 - Task
-
-## Prerequisites
+### Prerequisites
 ### Setup minikube if not already installed
 ```bash
 chmod +x init.sh
